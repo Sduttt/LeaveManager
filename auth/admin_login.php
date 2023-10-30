@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
-            header("location: ../admin");
+            header("location: ../admin/profile.php");
         }
         else{
             $credentialErr = true;

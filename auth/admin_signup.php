@@ -4,7 +4,7 @@ $error = false;
 
 $successAlert = '<div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
 <p class="font-semibold text-sm">Account created successfully!</p>
-<p class="text-xs">Please Login to continue</p>
+<p class="text-xs">Please <a href="admin_login.php" class="underline text-blue-800">Login</a> to continue</p>
 </div>';
 
 $notFilledAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
