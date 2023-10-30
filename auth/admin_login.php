@@ -1,10 +1,83 @@
 <?php
-$pageTitle = "Admin Login";
+include '../utils/dbconnect.php';
+$error = false;
+$loggedin = false;
+
+$successAlert = '<div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">Account created successfully!</p>
+<p class="text-xs">Please Login to continue</p>
+</div>';
+
+$notFilledAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">All informations are not provided</p>
+<p class="text-xs">Please fill all required informations to register.</p>
+</div>';
+
+$wrongCredentialAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">Wrong Credentials</p>
+<p class="text-xs">Please check email and password again.</p>
+</div>';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $credentialErr = false;
+
+    // $checkCredResult = mysqli_query($conn, $checkCred);
+    // if (mysqli_num_rows($checkCredResult) != 1) {
+    //     $credentialErr = true;
+    // }
+
+    // if (empty($email) || empty($password)) {
+    //     $error = true;
+    //     echo $notFilledAlert;
+    // } else if ($credentialErr == true) {
+    //     $error = true;
+    //     echo $wrongCredentialAlert;
+    // } else {
+    //     $loggedin = true;
+    //     session_start();
+    //     $_SESSION['loggedin'] = true;
+    //     $_SESSION['email'] = $email;
+    //     header("location: ../admin/dashboard.php");
+    // }
+
+    $grabUser = "SELECT * FROM `admins` WHERE email='$email'";
+    $grabUserResult = mysqli_query($conn, $grabUser);
+
+    if(mysqli_num_rows($grabUserResult) == 1){
+        $row = mysqli_fetch_assoc($grabUserResult);
+        if(password_verify($password, $row['password'])){
+            $loggedin = true;
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $email;
+            header("location: ../admin");
+        }
+        else{
+            $credentialErr = true;
+            echo $wrongCredentialAlert;
+        }
+    }
+    else{
+        $credentialErr = true;
+        echo $wrongCredentialAlert;
+    }
+
+}
+
+?>
+
+<?php
+$pageTitle = "Admin Sign Up";
 include_once "../includes/header.php";
 
 ?>
 
-<section class="rounded-md bg-black/70 p-2">
+<section class="rounded-md p-2">
+
     <div class="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div class="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
             <div class="mb-2">
@@ -15,17 +88,18 @@ include_once "../includes/header.php";
                 </svg>
             </div>
             <h2 class="text-2xl font-bold leading-tight text-black">
-                Welcome Admin
+                Admin Sign in
             </h2>
             <p class="mt-2text-sm text-gray-600 ">
                 Are you an Employee?
-                <a href="./employee_login.php" title=""
+                <a href="./employee_signup.php" title=""
                     class="font-semibold text-black transition-all duration-200 hover:underline">
-                    Log in here
+                    Sign Up here
                 </a>
             </p>
-            <form action="#" method="POST" class="mt-8">
+            <form action="" method="post" class="mt-8">
                 <div class="space-y-5">
+
                     <div>
                         <label for="" class="text-base font-medium text-gray-900">
 
@@ -34,7 +108,7 @@ include_once "../includes/header.php";
                         <div class="mt-2">
                             <input
                                 class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                type="email" placeholder="Email" />
+                                required name='email' type="email" placeholder="Email" />
                         </div>
                     </div>
                     <div>
@@ -43,19 +117,16 @@ include_once "../includes/header.php";
 
                                 Password
                             </label>
-                            <a href="#" title="" class="text-sm font-semibold text-black hover:underline">
 
-                                Forgot password?
-                            </a>
                         </div>
                         <div class="mt-2">
                             <input
                                 class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                type="password" placeholder="Password" />
+                                required name='password' type="password" placeholder="Password" />
                         </div>
                     </div>
                     <div>
-                        <button type="button"
+                        <button type="submit"
                             class="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
                             Sign In
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -65,16 +136,16 @@ include_once "../includes/header.php";
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </button>
-                        <p class="mt-2text-sm text-gray-600 ">
-                            New to our organization?
-                            <a href="./admin_signup.php" title=""
-                                class="my-3 font-semibold text-black transition-all duration-200 hover:underline">
-                                Sign up here
-                            </a>
-                        </p>
                     </div>
                 </div>
             </form>
+            <p class="mt-2text-sm text-gray-600 ">
+                Already have an account?
+                <a href="./admin_login.php" title=""
+                    class="my-3 font-semibold text-black transition-all duration-200 hover:underline">
+                    Sign in here
+                </a>
+            </p>
         </div>
     </div>
     </div>

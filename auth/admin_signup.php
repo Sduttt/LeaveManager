@@ -1,6 +1,5 @@
 <?php
 include '../utils/dbconnect.php';
-$showAlert = false;
 $error = false;
 
 $successAlert = '<div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
@@ -24,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
     $exists = false;
     $isExists = "SELECT * FROM `admins` WHERE email='$email'";
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $alreadyExistsAlert;
     }
     else {
-        $sql = "INSERT INTO `admins` (`name`, `email`, `password`) VALUES ('$name', '$email', '$password')";
+        $sql = "INSERT INTO `admins` (`name`, `email`, `password`) VALUES ('$name', '$email', '$hash')";
         $result = mysqli_query($conn, $sql);
         if ($result){
             echo $successAlert;
