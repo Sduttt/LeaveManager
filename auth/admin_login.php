@@ -54,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
+            $_SESSION['id'] = $row['id'];
+            // var_dump($_SESSION['id']);
             header("location: ../admin/profile.php");
         }
         else{
@@ -71,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php
-$pageTitle = "Admin Sign Up";
+$pageTitle = "Admin Log in";
 include_once "../includes/header.php";
 
 ?>
@@ -140,10 +142,10 @@ include_once "../includes/header.php";
                 </div>
             </form>
             <p class="mt-2text-sm text-gray-600 ">
-                Already have an account?
-                <a href="./admin_login.php" title=""
+               New to our organization?
+                <a href="./admin_signup.php" title=""
                     class="my-3 font-semibold text-black transition-all duration-200 hover:underline">
-                    Sign in here
+                    Sign Up here
                 </a>
             </p>
         </div>

@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_query($conn, $sql);
         if ($result){
             echo $successAlert;
+            header("location: ./admin_signin.php");
         }
     }
 
@@ -141,6 +142,7 @@ include_once "../includes/header.php";
     </div>
     </div>
 </section>
+
 <?php
 include_once "../includes/footer.php";
 ?>

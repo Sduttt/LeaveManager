@@ -8,8 +8,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit;
 }
 
-
-
 function conditionalClass($pageName)
 {
     $pages = explode('/', $_SERVER['PHP_SELF']);
@@ -21,8 +19,6 @@ function conditionalClass($pageName)
         echo "hover:bg-gray-100";
     }
 }
-
-// conditionalClass("profile.php");
 
 ?>
 
@@ -87,8 +83,8 @@ include_once "../includes/header.php";
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group">
+                <a href="employees.php"
+                    class="<?php conditionalClass("employees.php") ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -98,8 +94,8 @@ include_once "../includes/header.php";
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group">
+                <a href="add_employee.php"
+                    class="<?php conditionalClass("add_employee.php") ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                         <path
@@ -110,7 +106,7 @@ include_once "../includes/header.php";
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group">
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path
