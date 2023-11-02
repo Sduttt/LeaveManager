@@ -1,4 +1,70 @@
 <?php
+include '../utils/dbconnect.php';
+$error = false;
+$loggedin = false;
+
+$successAlert = '<div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">Account created successfully!</p>
+<p class="text-xs">Please Login to continue</p>
+</div>';
+
+$notFilledAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">All informations are not provided</p>
+<p class="text-xs">Please fill all required informations to register.</p>
+</div>';
+
+$wrongCredentialAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">Wrong Credentials</p>
+<p class="text-xs">Please check email and password again.</p>
+</div>';
+
+$notRegisteredAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">User not registered.</p>
+<p class="text-xs">Please sign up to continue.</p>
+</div>';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $employeeID = $_POST["employeeID"];
+    $password = $_POST["password"];
+
+    $credentialErr = false;
+
+    $grabUser = "SELECT * FROM `employee_auth` WHERE employeeID='$employeeID'";
+    $grabUserResult = mysqli_query($conn, $grabUser);
+
+    if(mysqli_num_rows($grabUserResult) < 1){
+        $error = true;
+        echo $notRegisteredAlert;
+    }
+
+    if(empty($employeeID) || empty($password)){
+        $error = true;
+        echo $notFilledAlert;
+    }
+
+    else if(mysqli_num_rows($grabUserResult) == 1){
+        $row = mysqli_fetch_assoc($grabUserResult);
+        if(password_verify($password, $row['password'])){
+            $loggedin = true;
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['employeeID'] = $employeeID;
+            header("location: ../employee/index.php");
+        }
+        else{
+            $error = true;
+            echo $wrongCredentialAlert;
+        }
+    }
+}
+
+
+?>
+
+
+<?php
 $pageTitle = "Employee Login";
 include_once "../includes/header.php";
 
@@ -24,7 +90,7 @@ include_once "../includes/header.php";
                     Log in here
                 </a>
             </p>
-            <form action="#" method="POST" class="mt-8">
+            <form action="" method="post" class="mt-8">
                 <div class="space-y-5">
                     <div>
                         <label for="" class="text-base font-medium text-gray-900">
@@ -33,7 +99,7 @@ include_once "../includes/header.php";
                         </label>
                         <div class="mt-2">
                             <input
-                                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" name="employeeID" required
                                 type="text" placeholder="Employee ID" />
                         </div>
                     </div>
@@ -43,19 +109,15 @@ include_once "../includes/header.php";
 
                                 Password
                             </label>
-                            <a href="#" title="" class="text-sm font-semibold text-black hover:underline">
-
-                                Forgot password?
-                            </a>
                         </div>
                         <div class="mt-2">
                             <input
-                                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"name="password" required
                                 type="password" placeholder="Password" />
                         </div>
                     </div>
                     <div>
-                        <button type="button"
+                        <button type="submit"
                             class="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
                             Sign In
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

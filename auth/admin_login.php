@@ -55,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
             $_SESSION['id'] = $row['id'];
-            // var_dump($_SESSION['id']);
             header("location: ../admin/profile.php");
         }
         else{
@@ -94,9 +93,9 @@ include_once "../includes/header.php";
             </h2>
             <p class="mt-2text-sm text-gray-600 ">
                 Are you an Employee?
-                <a href="./employee_signup.php" title=""
+                <a href="./employee_login.php" title=""
                     class="font-semibold text-black transition-all duration-200 hover:underline">
-                    Sign Up here
+                    Sign In here
                 </a>
             </p>
             <form action="" method="post" class="mt-8">

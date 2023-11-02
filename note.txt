@@ -1,3 +1,5 @@
 admins table creation query = CREATE TABLE `LeaveManager`.`admins` (`id` INT(5) NOT NULL AUTO_INCREMENT , `name` VARCHAR NOT NULL , `email` VARCHAR NOT NULL , `password` VARCHAR NOT NULL , `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 employee table creation query: CREATE TABLE `LeaveManager`.`employees` (`adminID` INT(5) NOT NULL , `employeeID` VARCHAR(5) NOT NULL , `name` VARCHAR(30) NOT NULL , `email` VARCHAR(30) NOT NULL , `designation` VARCHAR(30) NOT NULL , `totalLeave` INT(2) NOT NULL ) ENGINE = InnoDB;
+
+employee authentication table: CREATE TABLE `LeaveManager`.`employee_auth` (`employeeID` VARCHAR(5) NOT NULL , `email` VARCHAR(30) NOT NULL , `password` VARCHAR(252) NOT NULL , `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;

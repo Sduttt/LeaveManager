@@ -1,4 +1,86 @@
 <?php
+include '../utils/dbconnect.php';
+$error = false;
+
+$successAlert = '<div class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">Account created successfully!</p>
+<p class="text-xs">Please <a href="employee_login.php" class="underline text-blue-800">Login</a> to continue</p>
+</div>';
+
+$notFilledAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">All informations are not provided</p>
+<p class="text-xs">Please fill all required informations to register.</p>
+</div>';
+
+
+$alreadyExistsAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">User already exists.</p>
+<p class="text-xs">Please log in if already registered</p>
+</div>';
+
+$notRegisteredAlert = '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+<p class="font-semibold text-sm">User not registered.</p>
+<p class="text-xs">Request your admin to add you as an employee or check your Email and Employee ID carefully.</p>
+</div>';
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $employeeID = $_POST["employeeID"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+    $exists = false;
+    $isAddedByAdmin = true;
+
+
+
+    $check_query = "SELECT * FROM employee_auth WHERE email='$email' OR employeeID='$employeeID'";
+    $check_result = mysqli_query($conn, $check_query);
+
+    $checkAdmin_query = "SELECT * FROM employees WHERE email='$email' OR employeeID='$employeeID'";
+    $checkAdmin_result = mysqli_query($conn, $checkAdmin_query);
+
+
+    if (mysqli_num_rows($check_result) > 0) {
+        $exists = true;
+        echo $alreadyExistsAlert;
+    }
+
+    else if (mysqli_num_rows($checkAdmin_result) == 0) {
+        $isAddedByAdmin = false;
+        echo $notRegisteredAlert;
+    }
+
+    else if (empty($employeeID) || empty($email) || empty($password)) {
+        $error = true;
+        echo $notFilledAlert;
+    }
+
+    else if ($isAddedByAdmin && !$exists) {
+        // Insert new employee data into the database
+        $insert_query = "INSERT INTO employee_auth (employeeID, email, password) VALUES ('$employeeID', '$email', '$hash')";
+        $insert_result = mysqli_query($conn, $insert_query);
+
+        if ($insert_result) {
+            echo $successAlert;
+        } else {
+            echo '<div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
+                <p class="font-semibold text-sm">Error creating account.</p>
+                <p class="text-xs">Please try again later.</p>
+                </div>';
+        }
+    }
+
+
+
+}
+
+?>
+
+
+<?php
 $pageTitle = "Employee Sign Up";
 include_once "../includes/header.php";
 
@@ -24,7 +106,7 @@ include_once "../includes/header.php";
                     Sign up here
                 </a>
             </p>
-            <form action="#" method="POST" class="mt-8">
+            <form action="#" method="post" class="mt-8">
                 <div class="space-y-5">
                     <div>
                         <label for="" class="text-base font-medium text-gray-900">
@@ -34,7 +116,18 @@ include_once "../includes/header.php";
                         <div class="mt-2">
                             <input
                                 class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                type="text" placeholder="Employee ID" />
+                                required name='employeeID' type="text" placeholder="Employee ID" />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="" class="text-base font-medium text-gray-900">
+
+                            Email address
+                        </label>
+                        <div class="mt-2">
+                            <input
+                                class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                required name='email' type="email" placeholder="Email" />
                         </div>
                     </div>
                     <div>
@@ -48,11 +141,11 @@ include_once "../includes/header.php";
                         <div class="mt-2">
                             <input
                                 class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                type="password" placeholder="Password" />
+                                required name="password" type="password" placeholder="Password" />
                         </div>
                     </div>
                     <div>
-                        <button type="button"
+                        <button type="submit"
                             class="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
                             Sign Up
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
