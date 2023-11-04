@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $sql = "INSERT INTO employees (adminID, employeeID, name, email, designation, totalLeave) VALUES ('$adminID', '$employeeID', '$name', '$email', '$designation', '$totalLeave')";
+    $sql2 = "INSERT INTO `leave_account` (`employeeID`, `total_leaves`, `used_leaves`, `pending_leaves`, `remaining_leaves`) VALUES ('$employeeID', '$totalLeave', '0', '0', '$totalLeave')";
 
     $isExistSql = "SELECT * FROM employees WHERE employeeID='$employeeID' OR email='$email'";
 
@@ -37,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else{
             $result = mysqli_query($conn, $sql);
-            if($result){
+            $result2 = mysqli_query($conn, $sql2);
+            if($result && $result2){
                 // header("location: ./dashboard.php");
                 $alert = $successAlert;
             }

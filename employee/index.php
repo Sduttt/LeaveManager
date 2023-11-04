@@ -23,7 +23,7 @@ function conditionalClass($pageName)
 ?>
 
 <?php
-$pageTitle = "Admin Dashboard";
+$pageTitle = "Employee Dashboard";
 include_once "../includes/header.php";
 ?>
 
@@ -71,12 +71,12 @@ include_once "../includes/header.php";
                 </a>
             </li>
             <li>
-                <a href="leave_status.php"
-                    class="<?php conditionalClass("leave_status.php") ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
+                <a href="pending_leaves.php"
+                    class="<?php conditionalClass("pending_leaves.php") ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0zm0 18.75c-4.694 0-8.5-3.806-8.5-8.5S5.306 1.75 10 1.75s8.5 3.806 8.5 8.5-3.806 8.5-8.5 8.5zm0-15.625c-3.308 0-6 2.692-6 6v1.25h12v-1.25c0-3.308-2.692-6-6-6zm0 2.5c1.517 0 2.75 1.233 2.75 2.75S11.517 10 10 10s-2.75-1.233-2.75-2.75S8.483 5.625 10 5.625z"/>
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Leave Status</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Pending Leaves</span>
                 </a>
             </li>
             <li>
@@ -141,7 +141,7 @@ $emp_designation = $row['designation'];
 $emp_admin = $row['adminID'];
 
 ?>
-<div class=" bg-blue-100 p-4 text-black font-bold text-xl ml-64 flex justify-between">
+<div class="sticky top-0 w-[calc(100%-16rem)] bg-blue-100 p-4 text-black font-bold text-xl ml-64 flex justify-between">
     <h2 class="">Welcome to Employee Dashboard</h2>
     <h5 class="">Logged in as: <span class="font-medium text-md">
             <?php echo $emp_name ?>
