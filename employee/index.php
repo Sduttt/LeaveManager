@@ -84,8 +84,7 @@ include_once "../includes/header.php";
                     class="<?php conditionalClass("apply_leave.php") ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0zm-1.25 16.25a1.25 1.25 0 1 1 2.5 0v1.25a1.25 1.25 0 0 1-2.5 0v-1.25zm-3.75-3.75a1.25 1.25 0 1 1 1.768-1.768l.982.982a1.25 1.25 0 0 1-1.768 1.768l-.982-.982zm7.5 0a1.25 1.25 0 1 1-1.768 1.768l-.982-.982a1.25 1.25 0 0 1 1.768-1.768l.982.982zm-5-7.5a1.25 1.25 0 1 1 0 2.5h-1.25a1.25 1.25 0 0 1 0-2.5h1.25zm3.75-3.75a1.25 1.25 0 1 1-1.768 1.768l-.982-.982a1.25 1.25 0 0 1 1.768-1.768l.982.982zm-3.75 0a1.25 1.25 0 1 1 0-2.5h1.25a1.25 1.25 0 0 1 0 2.5h-1.25z" />
+                        <path d="M10 1.25C9.58579 1.25 9.25 1.58579 9.25 2.00001V9.25H2.00001C1.58579 9.25 1.25 9.58579 1.25 10C1.25 10.4142 1.58579 10.75 2.00001 10.75H9.25V17.9999C9.25 18.4141 9.58579 18.7499 10 18.7499C10.4142 18.7499 10.75 18.4141 10.75 17.9999V10.75H18C18.4142 10.75 18.75 10.4142 18.75 10C18.75 9.58579 18.4142 9.25 18 9.25H10.75V2.00001C10.75 1.58579 10.4142 1.25 10 1.25Z"/>
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Apply Leave</span>
                 </a>

@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_query = "SELECT * FROM employee_auth WHERE email='$email' OR employeeID='$employeeID'";
     $check_result = mysqli_query($conn, $check_query);
 
-    $checkAdmin_query = "SELECT * FROM employees WHERE email='$email' OR employeeID='$employeeID'";
+    $checkAdmin_query = "SELECT * FROM employees WHERE email='$email' AND employeeID='$employeeID'";
     $checkAdmin_result = mysqli_query($conn, $checkAdmin_query);
 
 

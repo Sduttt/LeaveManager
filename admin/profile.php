@@ -37,7 +37,7 @@ $joiningDate = $joiningDate['time'];
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-lg font-medium text-gray-500">Joining Date:</dt>
-                    <dd class="mt-1 text-lg text-gray-900"><?php echo $joiningDate ?></dd>
+                    <dd class="mt-1 text-lg text-gray-900"><?php echo date('d-m-Y', strtotime($joiningDate)) ?></dd>
                 </div>
             </dl>
         </div>

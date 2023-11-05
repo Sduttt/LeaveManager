@@ -1,6 +1,7 @@
 <?php
 ob_start();
-include_once "./index.php";
+include '../../utils/dbconnect.php';
+
 $leaveID = $_POST['leaveID'];
 $action = $_POST['action'];
 
@@ -28,5 +29,5 @@ if(isset($sql2)) {
     mysqli_query($conn, $sql2);
 }
 
-header("Location: leave_applications.php");
+header("Location: ../leave_applications.php");
 ob_end_flush();

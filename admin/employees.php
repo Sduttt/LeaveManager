@@ -21,6 +21,12 @@ include_once "./index.php";
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Designation
                             </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Leaves
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Profile
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -35,10 +41,12 @@ include_once "./index.php";
                                     echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["name"] . "</td>";
                                     echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["email"] . "</td>";
                                     echo "<td class='px-6 py-4 whitespace-nowrap'>" . $row["designation"] . "</td>";
+                                    echo "<td class='px-6 py-4 whitespace-nowrap'><a href='employeeleaves.php?id=" . $row["employeeID"] . "' class='text-indigo-600 hover:text-indigo-900'>Previous Leaves</a></td>";
+                                    echo "<td class='px-6 py-4 whitespace-nowrap'><a href='emp_profile.php?id=" . $row["employeeID"] . "' class='text-indigo-600 hover:text-indigo-900'>View</a></td>";
                                     echo "</tr>";
                                 }
                             } else {
-                                echo "<tr><td colspan='4' class='px-6 py-4 whitespace-nowrap'>No employees found.</td></tr>";
+                                echo "<tr><td colspan='6' class='px-6 py-4 whitespace-nowrap'>No employees found.</td></tr>";
                             }
                         ?>
                     </tbody>

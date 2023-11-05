@@ -47,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $updateLeaveAccount = "UPDATE `leave_account` SET `remaining_leaves` = `remaining_leaves` - '$total_days', `pending_leaves` = `pending_leaves` + '$total_days' WHERE `employeeID` = '$employeeID'";
 
-        $insertLeaveResult = mysqli_query($conn, $insertLeave);
 
-        if($availableLeaves >= $total_days) {
+        if ($availableLeaves >= $total_days) {
             if ($leave_type == 'paid') {
+                $insertLeaveResult = mysqli_query($conn, $insertLeave);
                 $updateLeaveAccountResult = mysqli_query($conn, $updateLeaveAccount);
             }
-    
+
             if ($insertLeaveResult) {
                 echo '<div class="ml-72 bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3 " role="alert">
                 <p class="font-semibold text-sm">Leave applied successfully.</p>
@@ -64,8 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="font-semibold text-sm">Something went wrong.' . mysqli_error($conn) . '</p>
                 </div>';
             }
-        }
-        else {
+        } else {
             echo '<div class="ml-72 bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 " role="alert">
             <p class="font-semibold text-sm">You do not have enough leaves.</p>
             </div>';

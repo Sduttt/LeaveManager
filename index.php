@@ -9,11 +9,11 @@ include_once "includes/header.php";
     <div class="flex-flex-col w-full flex flex-col items-center py-8">
         <p class="text-2xl font-bold">Choose your Role</p>
         <div class="w-1/2 my-3 flex justify-center">
-            <a class="mx-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            <a class="mx-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md"
                 href="./auth/admin_login.php">
                 Admin
             </a>
-            <a class="mx-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            <a class="mx-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md"
                 href="./auth/employee_login.php">
                 Employee
             </a>
