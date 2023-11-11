@@ -28,17 +28,6 @@ include_once "../includes/header.php";
 ?>
 
 
-<!-- <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
-    type="button"
-    class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600">
-    <span class="sr-only">Open sidebar</span>
-    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path clip-rule="evenodd" fill-rule="evenodd"
-            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-        </path>
-    </svg>
-</button> -->
-
 <aside id="default-sidebar"
     class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
@@ -120,6 +109,28 @@ include_once "../includes/header.php";
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
                 </a>
+            </li>
+            
+            <li class="border-t fixed bottom-4 w-[calc(100%-16rem)] pt-4 px-2 flex items-end">
+                <img src="../images/dp.png" alt="Developer Avatar" class="w-12 h-12 rounded-full mr-2">
+                <div class="flex flex-col items-center mt-4">
+                    <span class="text-gray-900 font-semibold text-lg">Subham Dutta</span>
+
+                    <div class="flex items-center">
+                        <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/linkedin.png" alt="LinkedIn Icon"
+                                class="w-5 h-5 mr-2">
+                        </a>
+                        <a href="https://github.com/sduttt" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/github.png" alt="GitHub Icon"
+                                class="w-5 h-5 mr-2">
+                        </a>
+                        <a href="https://sduttt.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img.icons8.com/material-outlined/48/000000/domain.png" alt="Website Icon"
+                                class="w-5 h-5">
+                        </a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

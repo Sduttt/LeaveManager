@@ -1,4 +1,0 @@
-1. change fevicon from header.php
-2. Modify home page design
-3. Add view each employee and update or delete employee options in admin dashboard
-4. Add my identity details in the dashboard bottom
