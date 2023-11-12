@@ -4,10 +4,10 @@
 // $password = "";
 // $database = "LeaveManager";
 
-$server = "leavemanager";
+$server = "leavemanager.mysql.database.azure.com";
 $username = "subham";
 $password = "Sdutta@7866";
-$database = "LeaveManager";
+$database = "leavemanager";
 
 $conn = mysqli_connect($server, $username, $password, $database);
 
