@@ -10,7 +10,7 @@ $password = "Sdutta@7866";
 $database = "leavemanager";
 
 $db = mysqli_init();
-mysqli_ssl_set($db, NULL, NULL, "path/to/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL); // Replace "path/to/BaltimoreCyberTrustRoot.crt.pem" with your SSL certificate path
+mysqli_ssl_set($db, NULL, NULL, "../BaltimoreCyberTrustRoot.crt.pem", NULL, NULL);
 
 $conn = mysqli_real_connect($db, $server, $username, $password, $database, 3306); // 3306 is the default MySQL port, change if needed
 
