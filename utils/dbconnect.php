@@ -9,11 +9,12 @@ $username = "subham";
 $password = "Sdutta@7866";
 $database = "leavemanager";
 
-$db = mysqli_init();
-mysqli_ssl_set($db, NULL, NULL, "../BaltimoreCyberTrustRoot.crt.pem", NULL, NULL);
+$conn = mysqli_init();
+mysqli_ssl_set($conn, NULL, NULL, "../BaltimoreCyberTrustRoot.crt.pem", NULL, NULL);
 
-$conn = mysqli_real_connect($db, $server, $username, $password, $database, 3306); // 3306 is the default MySQL port, change if needed
+$connectionSuccessful = mysqli_real_connect($conn, $server, $username, $password, $database, 3306); // 3306 is the default MySQL port, change if needed
 
-if (!$conn) {
+if (!$connectionSuccessful) {
     die("Connection error: " . mysqli_connect_error());
 }
+
