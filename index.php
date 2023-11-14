@@ -30,7 +30,7 @@ w-full
     </div>
 
     <div class="flex justify-between fixed bottom-0 w-screen text-white px-8 py-6 bg-gray-500 bg-opacity-50">
-        <h1 class="font-medium text-xl">©Subham Dutta | 2023</h1>
+        <a href="https://sduttt.netlify.app/" class="font-medium text-xl">©Subham Dutta | 2023</a>
         <div class="flex">
             <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/material-rounded/48/ffffff/linkedin.png" alt="LinkedIn Icon"

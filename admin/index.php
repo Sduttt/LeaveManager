@@ -12,7 +12,7 @@ function conditionalClass($pageName)
 {
     $pages = explode('/', $_SERVER['PHP_SELF']);
 
-    $curPage = $pages[3];
+    $curPage = end($pages);
     if ($pageName == $curPage) {
         echo "bg-blue-200";
     } else {
@@ -114,6 +114,7 @@ include_once "../includes/header.php";
             </li>
 
             <li class="border-t fixed bottom-4 w-[calc(100%-16rem)] pt-4 px-2 flex items-end">
+                <h1 class="font-bold text-gray-700 my-3 text-2xl">Developed by:</h1>
                 <img src="../images/dp.png" alt="Developer Avatar" class="w-12 h-12 rounded-full mr-2">
                 <div class="flex flex-col items-center mt-4">
                     <span class="text-gray-900 font-semibold text-lg">Subham Dutta</span>

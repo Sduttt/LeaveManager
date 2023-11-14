@@ -1,5 +1,7 @@
 # Employee Leave Management System
->Note: This project is still under development.
+
+
+**This project is live on the following link: [Leave Management System](https://leavemanagersduttt.azurewebsites.net/)**
 
 ## Description
 This is a simple leave management system for employees. It is built using php and Tailwind CSS.
