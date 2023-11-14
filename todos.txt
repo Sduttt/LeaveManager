@@ -1,9 +1,0 @@
-//1. add heading before the developers name
-
-//2. change url to highlight the active section in navbar
-
-3. add url in the readme file and remove 'developin mode' line
-
-//4. add portfolio link in the homepage
-
-5. delete this todo file
