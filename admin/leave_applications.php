@@ -96,7 +96,7 @@ include_once "./index.php";
                                 </td>
                                 <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-600">
                                 <div class=flex">
-                                <form class="flex" action="/actions/handle_leave.php" method="post">
+                                <form class="flex" action="admin/actions/handle_leave.php" method="post">
                                     <input type="hidden" name="leaveID" value="' . $row['leaveID'] . '">
                                     <input type="hidden" name="action" value="approve">
                                     <input type="hidden" name="employeeID" value="' . $employeeID . '">
@@ -110,7 +110,7 @@ include_once "./index.php";
                                     </button>
                                 </form>
 
-                                <form action="/actions/handle_leave.php" method="post">
+                                <form action="admin/actions/handle_leave.php" method="post">
                                     <input type="hidden" name="leaveID" value="' . $row['leaveID'] . '">
                                     <input type="hidden" name="action" value="reject">
                                     <input type="hidden" name="employeeID" value="' . $employeeID . '">
