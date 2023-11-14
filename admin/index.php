@@ -113,25 +113,27 @@ include_once "../includes/header.php";
                 </a>
             </li>
 
-            <li class="border-t fixed bottom-4 w-[calc(100%-16rem)] pt-4 px-2 flex items-end">
-                <h1 class="font-bold text-gray-700 my-3 text-2xl">Developed by:</h1>
-                <img src="../images/dp.png" alt="Developer Avatar" class="w-12 h-12 rounded-full mr-2">
-                <div class="flex flex-col items-center mt-4">
-                    <span class="text-gray-900 font-semibold text-lg">Subham Dutta</span>
+            <li class="border-t fixed bottom-4 w-[calc(100%-16rem)] pt-4 px-2 ">
+                <h1 class="font-semibold text-gray-500 text-center my-1 text-xl">Developed by:</h1>
+                <div class="flex items-end">
+                    <img src="../images/dp.png" alt="Developer Avatar" class="w-12 h-12 rounded-full mr-2">
+                    <div class="flex flex-col items-center mt-4">
+                        <span class="text-gray-900 font-semibold text-lg">Subham Dutta</span>
 
-                    <div class="flex items-center">
-                        <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
-                            <img src="https://img.icons8.com/material-outlined/48/000000/linkedin.png" alt="LinkedIn Icon"
-                                class="w-5 h-5 mr-2">
-                        </a>
-                        <a href="https://github.com/sduttt" target="_blank" rel="noopener noreferrer">
-                            <img src="https://img.icons8.com/material-outlined/48/000000/github.png" alt="GitHub Icon"
-                                class="w-5 h-5 mr-2">
-                        </a>
-                        <a href="https://sduttt.netlify.app/" target="_blank" rel="noopener noreferrer">
-                            <img src="https://img.icons8.com/material-outlined/48/000000/domain.png" alt="Website Icon"
-                                class="w-5 h-5">
-                        </a>
+                        <div class="flex items-center">
+                            <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
+                                <img src="https://img.icons8.com/material-outlined/48/000000/linkedin.png"
+                                    alt="LinkedIn Icon" class="w-5 h-5 mr-2">
+                            </a>
+                            <a href="https://github.com/sduttt" target="_blank" rel="noopener noreferrer">
+                                <img src="https://img.icons8.com/material-outlined/48/000000/github.png"
+                                    alt="GitHub Icon" class="w-5 h-5 mr-2">
+                            </a>
+                            <a href="https://sduttt.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <img src="https://img.icons8.com/material-outlined/48/000000/domain.png"
+                                    alt="Website Icon" class="w-5 h-5">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
