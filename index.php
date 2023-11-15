@@ -36,12 +36,12 @@ w-full
                 <img src="https://img.icons8.com/material-rounded/48/ffffff/linkedin.png" alt="LinkedIn Icon"
                     class="w-8 h-8 mx-2">
             </a>
-            <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/material-rounded/48/ffffff/github.png" alt="LinkedIn Icon"
+            <a href="https://github.com/Sduttt" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/material-rounded/48/ffffff/github.png" alt="Github Icon"
                     class="w-8 h-8 mx-2">
             </a>
-            <a href="https://www.linkedin.com/in/sduttt/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/material-rounded/48/ffffff/twitterx.png" alt="LinkedIn Icon"
+            <a href="https://twitter.com/sdutttttt" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/material-rounded/48/ffffff/twitterx.png" alt="x Icon"
                     class="w-8 h-8 mx-2">
             </a>
         </div>
